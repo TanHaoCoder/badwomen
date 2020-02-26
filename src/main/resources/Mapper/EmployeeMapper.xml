@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="badwomen.mapper.EmployeeMapper">
+    <select id="findAll" resultType="badwomen.model.Employee">
+        SELECT * FROM employee
+    </select>
+    <select id="byUsername" parameterType="String" resultType="badwomen.model.Employee">
+        select * from employee where username = #{username}
+    </select>
+    <select id="listByUsername" resultType="badwomen.model.Employee">
+        select * from employee
+    </select>
+    <select id="selectSaltByUsername" parameterType="String" resultType="String">
+        SELECT employee.salt FROM employee where username = #{username}
+    </select>
+    <insert id="addEmployee" parameterType="badwomen.model.Employee">
+        insert into employee (username,password,salt,role) values (#{username},#{password},#{salt},#{role})
+    </insert>
+    <update id="updateEmployeeData" parameterType="String">
+        update employee set password = #{password} where username = #{username}
+    </update>
+</mapper>

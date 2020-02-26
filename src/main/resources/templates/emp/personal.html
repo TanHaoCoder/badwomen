@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.thymeleaf.org/thymeleaf-extras-shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>个人页面</title>
+</head>
+<body>
+<table>
+    <thead>
+    <td>用户id</td>
+    <td>用户名</td>
+    <td>角色</td>
+    </thead>
+    <tbody>
+    <td th:text="${employee.getId()}"></td>
+    <td th:text="${employee.getUsername()}"></td>
+    <td th:text="${employee.getRole()}"></td>
+    </tbody>
+</table>
+<div shiro:hasPermission="role:admin">
+    <a th:href="@{/admin/findAllEmployee}">查看员工列表</a>
+</div>
+<a th:href="@{/emp/toUpdaDate/}+${employee.getUsername()}">修改密码</a>
+<a th:href="@{/logOut}">退出登录</a>
+</body>
+</html>

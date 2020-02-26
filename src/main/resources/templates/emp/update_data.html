@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改密码</title>
+</head>
+<body>
+<form th:action="@{/emp/updateData/}+${employee.getUsername()}">
+    <br>
+    <input type="password" th:name="password" placeholder="密码">
+    <br>
+    <input type="submit" value="更改">
+</form>
+<a th:href="@{/logOut}">退出登录</a>
+
+</body>
+</html>
